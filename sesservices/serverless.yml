@@ -1,0 +1,17 @@
+service: sesservices
+
+frameworkVersion: '3'
+
+provider:
+  name: aws
+  runtime: nodejs14.x
+  region: ap-south-1
+  stage: ses
+
+functions:
+  createContact:
+    handler: handler.createContact
+    events:
+    - httpd:
+        path: /mail
+        method: POST
